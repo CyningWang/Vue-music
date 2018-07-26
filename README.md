@@ -1,21 +1,22 @@
 # vue-music
 
-> 音乐播放器
+> 音乐播放器 项目学习流程
 
-## Build Setup
+## 上传项目到github
 
 ``` bash
-# install dependencies
-npm install
+# 1. 初始化本地工作区
+git init
 
-# serve with hot reload at localhost:8080
-npm run dev
+# 2. 添加要上传内容
+git add .  /* 初始全部添加 */
 
-# build for production with minification
-npm run build
+# 3. 提交到本地仓库
+git commit -m "initial commit"
 
-# build for production and view the bundle analyzer report
-npm run build --report
+# 4. 关联远程仓库
+git remote add origin 远程仓库地址
+
+# 5. 更新到远程仓库
+git push -u origin master
 ```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
