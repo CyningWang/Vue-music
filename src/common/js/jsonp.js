@@ -1,10 +1,12 @@
-import originJsonp from 'jsonp'
+import originJSONP from 'jsonp'
 
-export default function jsonp(url, data, option) {
-  url += (url.indexOf('?') < 0 ? '?' : '&') + param(data)
+// 自定义改写
+export default function jsonp(url, data, options) {
+  // 拼接成完整带参URL
+  url = formatURL(url, data)
 
   return new Promise((resolve, reject) => {
-    originJsonp(url, option, (err, data) => {
+    originJSONP(url, options, (err, data) => {
       if (!err) {
         resolve(data)
       } else {
@@ -14,11 +16,14 @@ export default function jsonp(url, data, option) {
   })
 }
 
-export function param(data) {
-  let url = ''
-  for (var k in data) {
-    let value = data[k] !== undefined ? data[k] : ''
-    url += '&' + k + '=' + encodeURIComponent(value)
+function formatURL(url, data) {
+  let params = ''
+  for (let key in data) {
+    if (data.hasOwnProperty(key)) {
+      let value = data[key] !== void 0 ? data[key] : ''
+      params += `&${key}=${encodeURIComponent(value)}`
+    }
   }
-  return url ? url.substring(1) : ''
+  params = params ? params.substring(1) : ''
+  return `${url}?${params}`
 }
