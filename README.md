@@ -2,7 +2,7 @@
 
 > 音乐播放器 项目学习流程
 
-## 上传项目到github
+## (1) 上传项目到github
 
 ``` bash
 # 1. 初始化本地工作区
@@ -21,7 +21,7 @@ git remote add origin 远程仓库地址
 git push -u origin master
 ```
 
-## slider组件实现
+## (2) slider组件实现
 > slider组件基于第三方better-scroll开发，相比于better-scroll 0.x.x版本，1.x.x版本有一些变动。
 
 ### 0.x.x版本和1.x.x版本在实现slider组件自动轮播的不同
