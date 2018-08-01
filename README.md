@@ -35,10 +35,10 @@ git push -u origin master
 
 
 ## （3） qq音乐歌单数据获取
-> 首先，qq音乐对于请求来源在host、referer上做出了限制
+> 首先，qq音乐对于请求来源在host、referer上做出了限制  
 > 解决方案：axios后端代理伪装http请求的host、referer参数
 
-原jsonp获取方式：browser ----→(jsonp请求) 第三方数据接口 
+原jsonp获取方式：browser ----→(jsonp请求) 第三方数据接口   
 后端代理绕过host、referer限制：browser ----→ 自身服务端 ----→(axios伪造请求头信息中的host、referer参数) 第三方数据接口
 
 ``` bash
