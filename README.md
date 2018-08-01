@@ -34,7 +34,7 @@ git push -u origin master
 2. next() 滚动到下一个页面，可以滚动到辅助页面，然后瞬间切换到首页，实现自动无缝轮播
 
 
-##（3） qq音乐歌单数据获取
+## (3) qq音乐歌单数据获取
 > 首先，qq音乐对于请求来源在host、referer上做出了限制  
 > 解决方案：axios后端代理伪装http请求的host、referer参数
 
