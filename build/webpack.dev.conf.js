@@ -12,6 +12,7 @@ const portfinder = require('portfinder')
 const express = require('express')
 const app = express()
 const axios = require('axios')
+const fs = require('fs')
 
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
@@ -54,6 +55,21 @@ const devWebpackConfig = merge(baseWebpackConfig, {
           headers: {
             referer: 'https://y.qq.com/',
             host: 'c.y.qq.com'
+          },
+          params: req.query
+        }).then((response) => {
+          res.json(response.data)
+        }).catch((err) => {
+          console.error(err)
+        })
+      })
+      app.get('/api/getSongVkey', (req, res) => {
+        const url = 'https://c.y.qq.com/base/fcgi-bin/fcg_music_express_mobile3.fcg'
+
+        axios.get(url, {
+          headers: {
+            referer: 'https://y.qq.com/',
+            host: 'c.y.qq.com',
           },
           params: req.query
         }).then((response) => {

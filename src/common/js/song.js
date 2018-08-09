@@ -1,12 +1,13 @@
 export default class Song {
-  constructor({id, mid, singer, name, album, duration, image, url}) {
+  constructor({id, mid, singer, name, album, duration, image}) {
     this.id = id
     this.mid = mid
     this.singer = singer
     this.name = name
     this.album = album
     this.duration = duration
-    this.url = url
+    this.image = image  // 专辑封面
+    this.url = ''  // 不能和get/set同名，否则报错'栈溢出'
   }
 }
 
@@ -18,8 +19,8 @@ export function createSong(musicData) {
     singer: filterSinger(musicData.singer),
     name: musicData.songname,
     album: musicData.albumname,
-    duration: musicData.interval
-    // url: `http://dl.stream.qqmusic.qq.com/C400${musicData.songmid}.m4a?guid=3638542697&vkey=${vkey}&uin=0&fromtag=38`
+    duration: musicData.interval,
+    image: `https://y.gtimg.cn/music/photo_new/T002R300x300M000${musicData.albummid}.jpg?max_age=2592000`
   })
 }
 
