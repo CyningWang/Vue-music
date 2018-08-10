@@ -1,3 +1,7 @@
+import {getLyric} from 'api/song'
+import {ERR_OK} from 'api/config'
+import {Base64} from 'js-base64'
+
 export default class Song {
   constructor({id, mid, singer, name, album, duration, image}) {
     this.id = id
@@ -8,6 +12,23 @@ export default class Song {
     this.duration = duration
     this.image = image  // 专辑封面
     this.url = ''  // 不能和get/set同名，否则报错'栈溢出'
+  }
+
+  getLyric() {
+    if (this.lyric) {
+      return Promise.resolve(this.lyric)
+    }
+
+    return new Promise((resolve, reject) => {
+      getLyric(this.mid).then((res) => {
+        if (res.code === ERR_OK) {
+          this.lyric = Base64.decode(res.lyric)
+          resolve(this.lyric)
+        } else {
+          reject(new Error('no lyric'))
+        }
+      })
+    })
   }
 }
 
